@@ -1,0 +1,26 @@
+{
+  "coffee": [
+    {
+      "id": 1,
+      "name_coffee": "Cappuccino",
+      "url": "https://images.pexels.com/photos/428310/pexels-photo-428310.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "price": 5.2,
+      "amount": 5
+    },
+    {
+      "id": 2,
+      "name_coffee": "House Coffee",
+      "url": "https://images.pexels.com/photos/1749303/pexels-photo-1749303.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "price": 5.2,
+      "amount": 5
+    },
+
+    {
+      "id": 3,
+      "name_coffee": "Espreso",
+      "url": "https://images.pexels.com/photos/6347/coffee-cup-working-happy.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "price": 2.5,
+      "amount": 0
+    }
+  ]
+}
