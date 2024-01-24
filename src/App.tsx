@@ -1,6 +1,30 @@
 import * as Styles from "./style/style.app";
+import { FaStar } from "react-icons/fa";
+import { useState, useEffect } from "react";
+import { api } from "./services/axios";
+
+type Coffee = {
+  id: number;
+  name_coffee: string;
+  url: string;
+  price: number;
+  amount: number;
+};
 
 function App() {
+  useEffect(() => {
+    async function getCoffees() {
+      const response = await api.get("/coffee");
+      setCoffee(response.data);
+    }
+
+    getCoffees();
+  }, []);
+
+  const [Coffee, setCoffee] = useState<Coffee[]>([]);
+
+  const handleSouldOut = () => {};
+
   return (
     <Styles.Container>
       <Styles.Main>
@@ -19,21 +43,31 @@ function App() {
         </Styles.Header>
 
         <Styles.ContainerProducts>
-          <Styles.Products>
-            <img
-              src="https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              alt=""
-            />
-            <div>
-              <p>cafe</p>
-              <span>price</span>
-            </div>
-            <div>
-              <button></button>
-              <p>4.7</p>
-              <span>(65 votes)</span>
-            </div>
-          </Styles.Products>
+          {Coffee.map((item) => (
+            <Styles.Products key={item.id}>
+              <img src={item.url} />
+              <Styles.CoffeeContent>
+                <p>{item.name_coffee}</p>
+                <span>
+                  {item.price.toLocaleString("pt-br", {
+                    style: "currency",
+                    currency: "BRL",
+                  })}
+                </span>
+              </Styles.CoffeeContent>
+              <Styles.CoffeeNotes>
+                <button>
+                  <FaStar size={20} color="#ffdf00" />
+                </button>
+                <p>4.7</p>
+              </Styles.CoffeeNotes>
+              <Styles.Notes>
+                <span style={{ fontSize: 10 }}>(65 votes)</span>
+                <p></p>
+                {item.amount <= 0 && <p>Sold Out</p>}
+              </Styles.Notes>
+            </Styles.Products>
+          ))}
         </Styles.ContainerProducts>
       </Styles.Main>
     </Styles.Container>
