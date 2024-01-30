@@ -10,7 +10,7 @@ export const Container = styled.div`
   width: 100vw;
   height: 100vh;
   img {
-    width: 110px;
+    width: 180px;
   }
 `;
 
@@ -79,3 +79,48 @@ export const ContainerProducts = styled.div`
 `;
 
 export const Products = styled.div``;
+
+export const CoffeeContent = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  p {
+    font-size: 14px;
+    font-weight: lighter;
+    letter-spacing: 1;
+  }
+
+  span {
+    font-size: 14px;
+    font-weight: lighter;
+    color: black;
+    background-color: aquamarine;
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 5px;
+  }
+`;
+
+export const CoffeeNotes = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+  button {
+    background-color: transparent;
+    outline: none;
+    border: none;
+  }
+`;
+
+export const Notes = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+
+  p {
+    color: red;
+  }
+`;
