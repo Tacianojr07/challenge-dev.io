@@ -22,8 +22,11 @@ function App() {
   }, []);
 
   const [Coffee, setCoffee] = useState<Coffee[]>([]);
+  const [showAvailable, setShowAvailable] = useState(false);
 
-  const handleSouldOut = () => {};
+  const handleShowAvailable = () => {
+    setShowAvailable(!showAvailable);
+  };
 
   return (
     <Styles.Container>
@@ -37,13 +40,17 @@ function App() {
           </Styles.paragraph>
 
           <Styles.ButtonsFlex>
-            <button>all products</button>
-            <button>Available now</button>
+            <button onClick={() => setShowAvailable(false)}>
+              all products
+            </button>
+            <button onClick={handleShowAvailable}>Available now</button>
           </Styles.ButtonsFlex>
         </Styles.Header>
 
         <Styles.ContainerProducts>
-          {Coffee.map((item) => (
+          {Coffee.filter(
+            (item) => !showAvailable || (showAvailable && item.amount > 0)
+          ).map((item) => (
             <Styles.Products key={item.id}>
               <img src={item.url} />
               <Styles.CoffeeContent>
